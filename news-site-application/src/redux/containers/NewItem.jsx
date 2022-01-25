@@ -1,33 +1,54 @@
-// import React from 'react';
-// import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getNews } from '../actions/action';
 
-// const imgStyle = {
-//   hight: 'auto',
-//   width: '80%',
-//   border: '4px solid RebeccaPurple ',
-//   borderRadius: '5%',
+const articleStyle = {
+  width: '50%',
+  margin: '0 auto',
+  color: 'olive',
+};
+function NewsItem() {
+  const dispatch = useDispatch();
+  const article = useSelector((store) => store.news);
+  useEffect(() => {
+    dispatch(getNews());
+  }, []);
+  if (!article) {
+    return null;
+  }
+  return (
+    <article style={articleStyle}>
+      <div>
+        <ul>
+          {this.props.article.map((news, index) => (
+            <li key={index}>
+              <div>
+                title is
+                {news.title}
+              </div>
+              <div>
+                text is
+                {news.text}
+              </div>
+              <div>
+                author is
+                {news.author}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </article>
+  );
+}
+// const mapStateToProps = (state) => {
+//   return {};
 // };
-// const articleStyle = {
-//   width: '50%',
-//   margin: '0 auto',
-//   color: 'olive',
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+
+//   };
 // };
-// function NewsItem({ article }) {
-//   return article
-//     ? (
-//       <article style={articleStyle}>
-//         <div>
-//           <h1>{article.title}</h1>
-//           <img style={imgStyle} src={article.urlToImage} alt="" />
-//           <h4>{article.description}</h4>
-//           <a href={article.url} target="_blank" rel="noreferrer">READ MORE</a>
-//         </div>
-//       </article>
-//     )
-//     : null;
-// }
-// const mapStateToProps = (state) => ({
-//   article: state.news,
-// });
-// connect(mapStateToProps, null)(NewsItem);
-// export default NewsItem;
+
+export default NewsItem;

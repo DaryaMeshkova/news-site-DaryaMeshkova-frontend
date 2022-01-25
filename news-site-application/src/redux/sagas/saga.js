@@ -18,13 +18,15 @@ export default function* rootSaga() {
 
 // import axios from 'axios';
 
+// const api = axios.create({ baseURL: 'http://127.0.0.1:8000/api/' });
+
 // export default class PersonList extends React.Component {
 //   state = {
 //     persons: []
 //   }
 
 //   componentDidMount() {
-//     axios.get(`http://127.0.0.1:8000/api/news/`)
+//     axios.get(`api:news/`)
 //       .then(res => {
 //         const persons = res.data;
 //         this.setState({ persons });

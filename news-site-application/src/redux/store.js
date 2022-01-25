@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootSaga from './sagas/saga';
 import rootReducer from './reducers/reducer';
-import App from './components/MainPage';
+import MainPage from './components/MainPage';
 
 const sagaMiddleware = createSagaMiddleware();
 export const store = createStore(
@@ -12,4 +12,4 @@ export const store = createStore(
   composeWithDevTools(applyMiddleware(sagaMiddleware)),
 );
 sagaMiddleware.run(rootSaga);
-export const ConnectedApp = connect((state) => state)(App);
+export const ConnectedApp = connect((state) => state)(MainPage);

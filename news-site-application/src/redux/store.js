@@ -2,6 +2,7 @@ import createSagaMiddleware from 'redux-saga';
 import { connect } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+
 import rootSaga from './sagas/saga';
 import reducer from './reducers/reducer';
 import MainPage from './components/MainPage';

@@ -5,7 +5,7 @@ function NewItem({ data }) {
   const { title, text, author } = data;
   return (
     <div>
-      <h1>{author}</h1>
+      <h4>{author}</h4>
       <h4>{title}</h4>
       <div>
         {' '}

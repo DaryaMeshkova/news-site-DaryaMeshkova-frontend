@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import NewsItem from '../containers/NewItem';
 import { getNews } from '../actions/action';
 

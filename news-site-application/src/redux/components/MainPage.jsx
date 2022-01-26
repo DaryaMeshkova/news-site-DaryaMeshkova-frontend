@@ -6,19 +6,19 @@ import { getNews } from '../actions/action';
 
 function MainPage() {
   const dispatch = useDispatch();
-  const newsarr = useSelector((store) => store.news);
+  const news = useSelector((store) => store.news);
   useEffect(() => {
     dispatch(getNews());
   }, []);
   return (
-    <div>
-      {newsarr.map((article) => (
+    <>
+      {news.map((article) => (
         <NewsItem
           key={article.id}
           data={article}
         />
       ))}
-    </div>
+    </>
   );
 }
 export default MainPage;

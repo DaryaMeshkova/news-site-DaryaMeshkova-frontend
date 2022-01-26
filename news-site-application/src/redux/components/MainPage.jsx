@@ -1,14 +1,22 @@
-import React from 'react';
-import Button from '../containers/button';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import NewsItem from '../containers/NewItem';
-import Loading from '../containers/Loading';
+import { getNews } from '../actions/action';
 
 function MainPage() {
+  const dispatch = useDispatch();
+  const newsarr = useSelector((store) => store.news);
+  useEffect(() => {
+    dispatch(getNews());
+  }, []);
   return (
     <div>
-      <Button />
-      <Loading />
-      <NewsItem />
+      {newsarr.map((article) => (
+        <NewsItem
+          key={article.id}
+          data={article}
+        />
+      ))}
     </div>
   );
 }

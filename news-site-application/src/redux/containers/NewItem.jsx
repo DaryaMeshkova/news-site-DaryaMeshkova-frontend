@@ -1,54 +1,28 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getNews } from '../actions/action';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const articleStyle = {
-  width: '50%',
-  margin: '0 auto',
-  color: 'olive',
-};
-function NewsItem() {
-  const dispatch = useDispatch();
-  const article = useSelector((store) => store.news);
-  useEffect(() => {
-    dispatch(getNews());
-  }, []);
-  if (!article) {
-    return null;
-  }
+function NewItem({ data }) {
+  const { title, text, author } = data;
   return (
-    <article style={articleStyle}>
+    <div>
+      <h1>{author}</h1>
+      <h4>{title}</h4>
       <div>
-        <ul>
-          {this.props.article.map((news, index) => (
-            <li key={index}>
-              <div>
-                title is
-                {news.title}
-              </div>
-              <div>
-                text is
-                {news.text}
-              </div>
-              <div>
-                author is
-                {news.author}
-              </div>
-            </li>
-          ))}
-        </ul>
+        {' '}
+        {text}
       </div>
-    </article>
+    </div>
   );
 }
-// const mapStateToProps = (state) => {
-//   return {};
-// };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
+NewItem.propTypes = {
+  data: PropTypes.shape(
+    {
+      title: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      author: PropTypes.number.isRequired,
+    },
+  ).isRequired,
+};
 
-//   };
-// };
-
-export default NewsItem;
+export default (NewItem);

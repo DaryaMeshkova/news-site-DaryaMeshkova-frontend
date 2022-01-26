@@ -1,6 +1,6 @@
 import * as actionTypes from '../actionsType/action_1';
 
 export const getNews = () => ({
-  type: actionTypes.GET_NEWS,
+  type: actionTypes.NEWS_REQUESTED,
 });
 export default getNews;

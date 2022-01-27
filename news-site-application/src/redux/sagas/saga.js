@@ -1,18 +1,22 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
 
-import { NEWS_REQUESTED, NEWS_RECEIVED } from '../actionsType/action_1';
+import { NEWS_REQUESTED, NEWS_RECEIVED, NEWS_REJECTED } from '../actionTypes/actionType';
 import api from '../api/api';
 
-function* axiosNews() {
-  const json = yield api.get('news/')
-    .then((response) => response.data);
-  yield put({ type: NEWS_RECEIVED, payload: json });
+function* fetchNews() {
+  try {
+    const json = yield api.get('news/')
+      .then((response) => response.data);
+    yield put({ type: NEWS_RECEIVED, payload: json });
+  } catch (error) {
+    yield put({ type: NEWS_REJECTED, error });
+  }
 }
-function* actionWatcher() {
-  yield takeLatest(NEWS_REQUESTED, axiosNews);
+function* fetchNewsWatcher() {
+  yield takeLatest(NEWS_REQUESTED, fetchNews);
 }
 export default function* rootSaga() {
   yield all([
-    actionWatcher(),
+    fetchNewsWatcher(),
   ]);
 }

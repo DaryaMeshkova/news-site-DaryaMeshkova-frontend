@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 function NewItem({ data }) {
   const { title, text, author } = data;
   return (
-    <div>
+    <>
       <h4>{author}</h4>
       <h4>{title}</h4>
       <div>
         {' '}
         {text}
       </div>
-    </div>
+    </>
   );
 }
 
@@ -20,7 +20,7 @@ NewItem.propTypes = {
     {
       title: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
-      author: PropTypes.number.isRequired,
+      author: PropTypes.string.isRequired,
     },
   ).isRequired,
 };

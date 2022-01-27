@@ -6,10 +6,27 @@ import { getNews } from '../actions/action';
 
 function MainPage() {
   const dispatch = useDispatch();
-  const news = useSelector((store) => store.news);
   useEffect(() => {
     dispatch(getNews());
-  }, []);
+  }, [dispatch]);
+
+  const {
+    news,
+    error: postsFetchError,
+    loading: isPostsFetching,
+  } = useSelector((state) => state.newsPageReducer);
+
+  if (isPostsFetching) {
+    return 'Loading...';
+  }
+
+  if (postsFetchError) {
+    if (process.env.NODE_ENV !== 'production') {
+      return `Error: ${postsFetchError.message}`;
+    }
+    return 'Error: hidden';
+  }
+
   return (
     <>
       {news.map((article) => (

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import NewsItem from '../../redux/containers/NewItem';
-import { getNews } from '../../redux/actions/action';
+import { getNews } from '../../redux/actions';
 
 function MainPage() {
   const dispatch = useDispatch();

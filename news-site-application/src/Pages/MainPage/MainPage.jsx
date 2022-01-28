@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import NewsItem from '../redux/containers/NewItem';
-import { getNews } from '../redux/actions/action';
+import NewsItem from '../../redux/containers/NewItem';
+import { getNews } from '../../redux/actions/action';
 
 function MainPage() {
   const dispatch = useDispatch();

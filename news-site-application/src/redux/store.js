@@ -5,7 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootSaga from './sagas/saga';
 import combineReducers from './reducers/combineReducer';
-import MainPage from '../components/MainPage';
+import MainPage from '../Pages/MainPage/MainPage';
 
 const sagaMiddleware = createSagaMiddleware();
 export const store = createStore(

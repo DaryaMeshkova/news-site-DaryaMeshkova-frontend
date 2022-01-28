@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import NewsItem from '../../redux/containers/NewItem';
 import { getNews } from '../../redux/actions/action';
+import Search from '../../components/Search';
 
 function MainPage() {
   const dispatch = useDispatch();
@@ -10,8 +11,8 @@ function MainPage() {
     dispatch(getNews());
   }, [dispatch]);
 
+  const [searchValue, setSearchValue] = useState([]);
   const {
-    news,
     error: postsFetchError,
     loading: isPostsFetching,
   } = useSelector((state) => state.newsPageReducer);
@@ -29,7 +30,8 @@ function MainPage() {
 
   return (
     <>
-      {news.map((article) => (
+      <Search setSearchValue={setSearchValue} />
+      {searchValue.map((article) => (
         <NewsItem
           key={article.id}
           data={article}

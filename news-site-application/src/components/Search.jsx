@@ -6,7 +6,6 @@ function Search({ setSearchValue }) {
   const news = useSelector((store) => store.newsPageReducer.news);
   const [searchBarValue, setSearchBarValue] = useState('');
   const handleChange = (e) => {
-    console.log(handleChange);
     setSearchBarValue(e.target.value);
   };
   useEffect(

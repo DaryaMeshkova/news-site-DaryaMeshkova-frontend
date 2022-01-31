@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
 ‍function Filter({setFilterValue}) {
-  const [setFilterValue, setStateFilterValue] = useState('');
-  value = { setFilterValue};
+  const [setFilterBarValue, setStateFilterValue] = useState({
+    data:[],
+    author:"",
+    tags:""});
+  
+
   const handleChange = (e) => {
-    setSearchBarValue(e.target.value);
-  };
+    setStateFilterValue(news.filter((value) => value.title.includes(searchBarValue))),
+    [searchBarValue],
+  );
+  useEffect(
+  );
   return (
     <FormControl fullWidth>
   <InputLabel variant="standard" htmlFor="uncontrolled-native">
@@ -25,3 +32,9 @@ import React, { useState, useEffect } from 'react';
 </FormControl>
   );
 }
+
+Filter.propTypes = {
+  setFilterValue: PropTypes.func.isRequired,
+};
+
+export default Filter;

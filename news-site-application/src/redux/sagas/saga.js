@@ -1,7 +1,7 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
 
-import { NEWS_REQUESTED, NEWS_RECEIVED, NEWS_REJECTED } from '../actionTypes/actionType';
-import api from '../api/api';
+import { NEWS_REQUESTED, NEWS_RECEIVED, NEWS_REJECTED } from '../actionTypes';
+import api from '../api';
 
 function* fetchNews() {
   try {

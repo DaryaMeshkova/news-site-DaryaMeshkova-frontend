@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -7,9 +6,13 @@ function Search({ setSearchValue }) {
   const news = useSelector((store) => store.newsPageReducer.news);
   const [searchBarValue, setSearchBarValue] = useState('');
   const handleChange = (e) => {
+    console.log(handleChange);
     setSearchBarValue(e.target.value);
   };
-  useEffect(() => setSearchValue(news.filter((item) => item.title.includes(searchBarValue))), [searchBarValue]);
+  useEffect(
+    () => setSearchValue(news.filter((item) => item.title.includes(searchBarValue))),
+    [searchBarValue],
+  );
 
   return (
     <div>

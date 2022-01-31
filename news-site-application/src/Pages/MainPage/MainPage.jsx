@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import NewsItem from '../../redux/containers/NewItem';
-import { getNews } from '../../redux/actions/action';
+import { getNews } from '../../redux/actions';
 import Search from '../../components/Search';
 
 function MainPage() {
@@ -30,6 +30,7 @@ function MainPage() {
 
   return (
     <>
+      {/* <Filter /> */}
       <Search setSearchValue={setSearchValue} />
       {searchValue.map((article) => (
         <NewsItem

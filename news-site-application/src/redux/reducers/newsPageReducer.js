@@ -1,4 +1,4 @@
-import { NEWS_REQUESTED, NEWS_RECEIVED, NEWS_REJECTED } from '../actionTypes/actionType';
+import { NEWS_REQUESTED, NEWS_RECEIVED, NEWS_REJECTED } from '../actionTypes';
 
 const initialState = {
   news: [],

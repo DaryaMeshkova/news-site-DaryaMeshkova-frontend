@@ -10,7 +10,6 @@ function MainPage() {
   useEffect(() => {
     dispatch(getNews());
   }, [dispatch]);
-
   const [searchValue, setSearchValue] = useState([]);
   const {
     error: postsFetchError,
@@ -30,7 +29,6 @@ function MainPage() {
 
   return (
     <>
-      {/* <Filter /> */}
       <Search setSearchValue={setSearchValue} />
       {searchValue.map((article) => (
         <NewsItem

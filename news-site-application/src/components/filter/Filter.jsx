@@ -1,40 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-‍function Filter({setFilterValue}) {
-  const [setFilterBarValue, setStateFilterValue] = useState({
-    data:[],
-    author:"",
-    tags:""});
-  
+import { FormControl, InputLabel, NativeSelect } from '@material-ui/core';
 
-  const handleChange = (e) => {
-    setStateFilterValue(news.filter((value) => value.title.includes(searchBarValue))),
-    [searchBarValue],
-  );
-  useEffect(
-  );
+import { ALL, TAGS, AUTHOR } from '../constants';
+
+function Filter({ filterValue, SetFilterValue }) {
+  const handleChange = (event) => {
+    SetFilterValue(event.target.value);
+  };
+
   return (
-    <FormControl fullWidth>
-  <InputLabel variant="standard" htmlFor="uncontrolled-native">
-    filter
-  </InputLabel>
-  <NativeSelect
-    defaultValue={all}
-    inputProps={{
-      name: 'filter',
-      id: 'uncontrolled-native',
-    }}
-  >
-    <option value={all}>All</option>
-    <option value={author}>Author</option>
-    <option value={tags}>Tags</option>
-  </NativeSelect>
-</FormControl>
+    <div>
+      <FormControl fullWidth>
+        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+          filter
+        </InputLabel>
+        <NativeSelect
+          onChange={handleChange}
+          defaultValue={filterValue}
+          inputProps={{
+            name: 'age',
+            id: 'uncontrolled-native',
+          }}
+        >
+          <option value={ALL}>All</option>
+          <option value={AUTHOR}>Author</option>
+          <option value={TAGS}>Tags</option>
+        </NativeSelect>
+      </FormControl>
+    </div>
   );
 }
 
 Filter.propTypes = {
-  setFilterValue: PropTypes.func.isRequired,
+  SetFilterValue: PropTypes.func.isRequired,
+  filterValue: PropTypes.string.isRequired,
 };
 
 export default Filter;

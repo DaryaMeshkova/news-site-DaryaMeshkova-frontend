@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { FormControl, InputLabel, NativeSelect } from '@material-ui/core';
 
-import { ALL, TAGS, AUTHOR } from '../constants';
+import { ALL, TAGS, AUTHOR } from '../../constants';
 
 function Filter({ filterValue, SetFilterValue }) {
   const handleChange = (event) => {

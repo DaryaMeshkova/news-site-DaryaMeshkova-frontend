@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import Filter from './filter/Filter';
+import Filter from '../filter/Filter';
 
-import { ALL, TAGS, AUTHOR } from './constants';
+import { ALL, TAGS, AUTHOR } from '../constants';
 
 function Search({ setSearchValue }) {
   const news = useSelector((store) => store.newsPageReducer.news);
@@ -29,7 +29,13 @@ function Search({ setSearchValue }) {
   return (
     <div>
       <Filter filterValue={filterValue} SetFilterValue={SetFilterValue} />
-      <input type="text" placeholder="Search" value={searchBarValue} onChange={handleChange} />
+      <input
+        type="text"
+        placeholder="Search"
+        defaultValue={searchBarValue}
+        value={searchBarValue}
+        onChange={handleChange}
+      />
     </div>
   );
 }

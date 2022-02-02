@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import NewsItem from '../../redux/containers/NewItem';
 import { getNews } from '../../redux/actions';
-import Search from '../../components/Search';
+import Search from '../../components/search/Search';
 
 function MainPage() {
   const dispatch = useDispatch();

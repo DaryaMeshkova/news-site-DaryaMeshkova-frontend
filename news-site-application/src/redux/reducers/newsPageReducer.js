@@ -5,7 +5,7 @@ const initialState = {
   loading: false,
   error: null,
 };
-const newsPageReducer = (state = initialState, action = {}) => {
+const news = (state = initialState, action = {}) => {
   switch (action.type) {
     case NEWS_REQUESTED:
       return { ...state, loading: true, error: null };
@@ -21,4 +21,4 @@ const newsPageReducer = (state = initialState, action = {}) => {
       return state;
   }
 };
-export default newsPageReducer;
+export default news;

@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+import MainPage from '../pages/MainPage/MainPage';
+
 import rootSaga from './sagas/saga';
 import combineReducers from './reducers/combineReducer';
-import MainPage from '../pages/MainPage/MainPage';
 
 const sagaMiddleware = createSagaMiddleware();
 export const store = createStore(

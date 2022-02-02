@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import NewsItem from '../../redux/containers/NewItem';
 import { getNews } from '../../redux/actions';
-import Search from '../../components/search/Search';
-import filteredNews from '../../utils';
+
+import NewsItem from '../../redux/containers/NewItem';
 import Filter from '../../components/filter/Filter';
+import Search from '../../components/search/Search';
+
+import filteredNews from '../../utils';
+
 import { FILTER_NEWS_ALL } from '../../constants';
 
 function MainPage() {
@@ -20,7 +23,7 @@ function MainPage() {
     news,
     error: postsFetchError,
     loading: isPostsFetching,
-  } = useSelector((state) => state.newsPageReducer);
+  } = useSelector((state) => state.news);
   useEffect(() => {
     setFiltersNews(filteredNews(news, searchValue, filterValue));
   }, [searchValue, filterValue, news]);

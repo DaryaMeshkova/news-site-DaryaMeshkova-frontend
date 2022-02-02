@@ -4,13 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import NewsItem from '../../redux/containers/NewItem';
 import { getNews } from '../../redux/actions';
 import Search from '../../components/search/Search';
-import filteredNews from '../../utilits';
+import filteredNews from '../../utils';
 import Filter from '../../components/filter/Filter';
-import { ALL } from '../../constants';
+import { FILTER_NEWS_ALL } from '../../constants';
 
 function MainPage() {
   const [searchValue, setSearchValue] = useState('');
-  const [filterValue, SetFilterValue] = useState(ALL);
+  const [filterValue, setFilterValue] = useState(FILTER_NEWS_ALL);
   const [filtersNews, setFiltersNews] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -37,7 +37,7 @@ function MainPage() {
 
   return (
     <>
-      <Filter filterValue={filterValue} SetFilterValue={SetFilterValue} />
+      <Filter filterValue={filterValue} setFilterValue={setFilterValue} />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       {filtersNews.map((article) => (
         <NewsItem

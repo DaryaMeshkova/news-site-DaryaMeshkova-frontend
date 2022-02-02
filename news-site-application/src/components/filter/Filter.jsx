@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import { FormControl, InputLabel, NativeSelect } from '@material-ui/core';
 
-import { ALL, TAGS, AUTHOR } from '../../constants';
+import { FILTER_NEWS_ALL, FILTER_NEWS_TAGS, FILTER_NEWS_AUTHOR } from '../../constants';
 
-function Filter({ filterValue, SetFilterValue }) {
+function Filter({ filterValue, setFilterValue }) {
   const handleChange = (event) => {
-    SetFilterValue(event.target.value);
+    setFilterValue(event.target.value);
   };
 
   return (
@@ -24,9 +24,9 @@ function Filter({ filterValue, SetFilterValue }) {
             id: 'uncontrolled-native',
           }}
         >
-          <option value={ALL}>All</option>
-          <option value={AUTHOR}>Author</option>
-          <option value={TAGS}>Tags</option>
+          <option value={FILTER_NEWS_ALL}>All</option>
+          <option value={FILTER_NEWS_AUTHOR}>Author</option>
+          <option value={FILTER_NEWS_TAGS}>Tags</option>
         </NativeSelect>
       </FormControl>
     </div>
@@ -34,7 +34,7 @@ function Filter({ filterValue, SetFilterValue }) {
 }
 
 Filter.propTypes = {
-  SetFilterValue: PropTypes.func.isRequired,
+  setFilterValue: PropTypes.func.isRequired,
   filterValue: PropTypes.string.isRequired,
 };
 

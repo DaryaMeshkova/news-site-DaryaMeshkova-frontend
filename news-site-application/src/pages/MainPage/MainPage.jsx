@@ -11,8 +11,6 @@ import filteredNews from '../../utils';
 
 import { FILTER_NEWS_ALL } from '../../constants';
 
-// import  { newsW }  from '../../redux/reducers/newsPageReducer';
-
 function MainPage() {
   const [searchValue, setSearchValue] = useState('');
   const [filterValue, setFilterValue] = useState(FILTER_NEWS_ALL);

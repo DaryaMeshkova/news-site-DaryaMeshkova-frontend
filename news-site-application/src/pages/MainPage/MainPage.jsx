@@ -6,6 +6,8 @@ import { getNews } from '../../redux/actions';
 import NewsItem from '../../redux/containers/NewItem';
 import Filter from '../../components/filter/Filter';
 import Search from '../../components/search/Search';
+import SingUpButton from '../../components/modal/SingUp';
+import LogInButton from '../../components/modal/LogIn';
 
 import filteredNews from '../../utils';
 
@@ -40,6 +42,8 @@ function MainPage() {
 
   return (
     <>
+      <SingUpButton />
+      <LogInButton />
       <Filter filterValue={filterValue} setFilterValue={setFilterValue} />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       {filtersNews.map((article) => (

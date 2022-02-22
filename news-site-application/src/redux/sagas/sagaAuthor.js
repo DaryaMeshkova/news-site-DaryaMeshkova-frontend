@@ -1,12 +1,12 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { approveLogin, declineLogin, requestTokenRefresh } from '../actions/actionCreators';
+import { approveLogin, declineLogin, requestTokenRefresh } from '../actions';
 import { AUTHENTICATION_REQUESTED } from '../actionTypes';
 import api from '../api';
 import { UNAUTHORIZED_FETCH_NEWS, UNAUTHORIZED_STATUS_CODE, INTERNAL_SERVER_ERROR_STATUS_CODE } from '../../constants';
 
 function* authenticateUser() {
   try {
-    const response = yield api.get('user_info/');
+    const response = yield api.post('user_info/');
     const payload = {
       id: response.data.id,
       email: response.data.email,

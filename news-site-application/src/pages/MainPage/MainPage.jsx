@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getNews } from '../../redux/actions';
+import { getNews } from '../../redux/actionsCreator';
 
 import NewsItem from '../../redux/containers/NewItem';
 import Filter from '../../components/filter/Filter';
 import Search from '../../components/search/Search';
-import SingUpButton from '../../components/modal/SingUp';
-import LogInButton from '../../components/modal/LogIn';
+
 
 import filteredNews from '../../utils';
 
@@ -32,7 +31,6 @@ function MainPage() {
   if (isPostsFetching) {
     return 'Loading...';
   }
-
   if (postsFetchError) {
     if (process.env.NODE_ENV !== 'production') {
       return `Error: ${postsFetchError.message}`;
@@ -42,8 +40,6 @@ function MainPage() {
 
   return (
     <>
-      <SingUpButton />
-      <LogInButton />
       <Filter filterValue={filterValue} setFilterValue={setFilterValue} />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       {filtersNews.map((article) => (

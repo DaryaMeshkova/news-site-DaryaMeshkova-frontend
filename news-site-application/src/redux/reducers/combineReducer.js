@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import newsReducer from './newsPageReducer';
-// import userReducer from './authReducer';
+import numberReducer from './paginationReducer';
 
 export default combineReducers({
   news: newsReducer,
-  // users: userReducer,
+  number: numberReducer,
 });

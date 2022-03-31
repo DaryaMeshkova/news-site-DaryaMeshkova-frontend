@@ -1,73 +1,73 @@
-import React from 'react';
+import  React, {useState} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Filter from '../filter/Filter';
+import { addNews } from '../../redux/actionsCreator';
 import { useDispatch } from 'react-redux';
-import { loginRequested, singUp } from '../../redux/actionsCreator';
-import { useState } from 'react';
-import SignInButton from './SignIn';
+import { FILTER_NEWS_ALL } from '../../constants';
 
-export default function SignUp() {
+export default function AddNewsModal(setTitle, setAuthor, setNewText, title, author, newText) {
   const [open, setOpen] = useState(false);
-  const [username, setuserName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const dispatch = useDispatch();
+  const [filterValue, setFilterValue]= useState(FILTER_NEWS_ALL)
+ const dispatch = useDispatch()
   const handleClickOpen = () => {
     setOpen(true);
   };
+
   const handleClose = () => {
     setOpen(false);
   };
-  const handleSignUp = () => {
-    dispatch(singUp({username, email, password}));
+  const createNews = () => {
     setOpen(false);
-  };
+      dispatch(addNews(title, newText, author))
+  }
+
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Sign up
+        Open form dialog
       </Button>
       <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>News</DialogTitle>
         <DialogContent>
+          <DialogContentText>
+          </DialogContentText>
           <TextField
+            autoFocus
             margin="dense"
-            label="Name"
-            type="text"
+            value={title}
+            onChange={setTitle}
             fullWidth
             variant="standard"
-            value={username}
-            onChange={(event)=> setuserName(event.target.value)}
           />
           <TextField
             autoFocus
             margin="dense"
-            label="Email Address"
-            type="email"
+            value={author}
+            onChange={setAuthor}
             fullWidth
             variant="standard"
-            value={email}
-            onChange={(event)=> setEmail(event.target.value)}
           />
-          <TextField
+            <TextField
             autoFocus
             margin="dense"
-            label="Password"
-            type="password"
+            value={newText}
+            onChange={setNewText}
             fullWidth
             variant="standard"
-            value={password}
-            onChange={(event)=> setPassword(event.target.value)}
           />
+          <Filter filterValue={filterValue} setFilterValue={setFilterValue}/>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleSignUp}>Sign up</Button>
+          <Button onClick={createNews}>Create news</Button>
         </DialogActions>
       </Dialog>
     </div>
-
   );
 }

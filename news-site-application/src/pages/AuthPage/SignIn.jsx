@@ -23,7 +23,6 @@ export default function SignIn() {
     dispatch(loginRequested({ email, password}));
     setOpen(false);
   };
-console.log( email, password)
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>

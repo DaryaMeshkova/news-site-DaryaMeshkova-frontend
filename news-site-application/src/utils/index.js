@@ -18,7 +18,6 @@ const filteredNews = (news, searchValue, filterValue) => {
   }
   const filterFields = filterNews[filterValue];
   const inputLC = searchValue.toLowerCase();
-  console.log(news)
   const result = news.filter((newsItem) => (
     filterFields(newsItem)
       .map((item) => String(item).toLowerCase())

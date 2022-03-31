@@ -9,6 +9,18 @@ export const declineLogout = () => ({ type: actionTypes.LOGOUT_DECLINED });
 export const singUp = (payload) => ({ type: actionTypes.SING_UP, payload });
 export const singUpApproved = () => ({ type: actionTypes.SING_UP_APPROVED});
 export const singUpError = (error) => ({ type: actionTypes.SING_UP_ERROR, error});
-export const loginRequested = (payload) => ({ type: actionTypes.LOGIN_REQUESTED, payload});
-export const loginApproved = (payload) => ({ type: actionTypes.LOGIN_APPROVED,payload});
-export const loginDeclined = () => ({ type: actionTypes.LOGIN_DECLINED});
+export const loginRequested = (payload, navigate) => ({ type: actionTypes.LOGIN_REQUESTED, payload, navigate});
+export const loginApproved = (payload, navigate) => ({ type: actionTypes.LOGIN_APPROVED,payload, navigate});
+export const loginDeclined = (error, navigate) => ({ type: actionTypes.LOGIN_DECLINED, error, navigate});
+export const saveChange = (payload) => ({ type: actionTypes.SAVE_CHANGE, payload });
+export const saveChangeSuccessesful = (payload) => ({ type: actionTypes.SAVE_CHANGE_SUCCESSESFUL, payload });
+export const saveChangeError = (error) => ({ type: actionTypes.SAVE_CHANGE_ERROR, error });
+export const newText = (payload) => ({type: actionTypes.NEW_TEXT, payload});
+export const getNumber = () => ({ type: actionTypes.NUMBER_REQUESTED });
+export const receiveNumber = (payload) => ({ type: actionTypes.NUMBER_RECEIVED, payload });
+export const rejectNumber = (error) => ({ type: actionTypes.NUMBER_REJECTED, error });
+
+export const addNews = (payload) => ({ type: actionTypes.ADD_NEWS_REQUESTED, payload });
+export const addNewsReceive = (payload) => ({ type: actionTypes.ADD_NEWS_RECEIVED, payload });
+export const addNewsReject = (error) => ({ type: actionTypes.ADD_NEWS_REJECTED, error });
+

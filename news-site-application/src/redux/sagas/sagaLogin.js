@@ -5,7 +5,6 @@ import { LOGIN_APPROVED, LOGIN_REQUESTED } from '../actionTypes';
 import api from '../api';
 
 function* loginUser({payload:{password, email}}) {
-  console.log(email)
   try {
     const response = yield api.post('token/', {password, email});
     yield put({typr:LOGIN_APPROVED, payload:{password, email}});

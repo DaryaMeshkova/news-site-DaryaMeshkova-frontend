@@ -5,9 +5,10 @@ import api from '../api';
 
 function* fetchNews() {
   try {
-    const json = yield api.get('news/?page=1')
+    const json = yield api.get(`news/?page=1`)
       .then((response) => response.data);
     yield put({ type: NEWS_RECEIVED, payload: json.results });
+    // console.log(json.count)
   } catch (error) {
     yield put({ type: NEWS_REJECTED, error });
   }

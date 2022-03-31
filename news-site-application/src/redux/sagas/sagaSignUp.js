@@ -3,7 +3,6 @@ import { SING_UP, SING_UP_ERROR, SING_UP_APPROVED } from '../actionTypes';
 import api from '../api';
 
 function* signUpUser({ payload: { password, email, username } }) {
-  console.log(password)
   try {
   //   let config = {
   //     headers: { 'Authorization': `Bearer ${localStorage.access}` }

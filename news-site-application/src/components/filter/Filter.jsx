@@ -12,7 +12,7 @@ function Filter({ filterValue, setFilterValue }) {
 
   return (
     <div>
-      <FormControl fullWidth>
+      <FormControl  >
         <InputLabel variant="standard" htmlFor="uncontrolled-native">
           filter
         </InputLabel>
@@ -21,7 +21,6 @@ function Filter({ filterValue, setFilterValue }) {
           defaultValue={filterValue}
           inputProps={{
             name: 'age',
-            id: 'uncontrolled-native',
           }}
         >
           <option value={FILTER_NEWS_ALL}>All</option>

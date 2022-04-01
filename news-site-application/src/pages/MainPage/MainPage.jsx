@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getNews } from '../../redux/actionsCreator';
+import { getNews, getTags } from '../../redux/actionsCreator';
 
 import NewsItem from '../../redux/containers/NewItem';
 import Filter from '../../components/filter/Filter';
@@ -12,15 +12,17 @@ import { FILTER_NEWS_ALL } from '../../constants';
 import BasicPagination from '../../components/pagination/Pagination';
 import ButtonEdit from '../../components/ButtonEdit';
 import AddNewsModal from '../../components/addNewText/AddNewsModal';
+import SelectTag from '../../components/selectTag/selectTag';
 
 export default function MainPage() {
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [newText, setNewText] = useState('');
+  const [page, setPage] = useState(1);
+  const [title, setTitle] = useState();
+  const [author, setAuthor] = useState();
+  const [newText, setNewText] = useState();
   const [searchValue, setSearchValue] = useState('');
   const [filterValue, setFilterValue] = useState(FILTER_NEWS_ALL);
   const [filtersNews, setFiltersNews] = useState([]);
-  const [text, setText] = useState('')
+  const [text, setText] = useState(1)
   const dispatch = useDispatch();
 
   
@@ -31,7 +33,7 @@ export default function MainPage() {
 
   useEffect(() => {
     dispatch(getNumber());
- 
+    dispatch(getTags())
   }, [dispatch]);
 
 
@@ -58,10 +60,12 @@ export default function MainPage() {
    
 
   return (
-    <>
+    <div >
+
       <Filter filterValue={filterValue} setFilterValue={setFilterValue} />
       <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       <AddNewsModal
+      
       title={title}
       author={author}
       newText={newText}
@@ -81,8 +85,8 @@ export default function MainPage() {
         text={text}/>
         </>
       ))}
-      <BasicPagination/>
-    </>
+      <BasicPagination page={page} setPage={setPage}/>
+    </div>
   );
 }
 

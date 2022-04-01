@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Button from '@mui/material/Button';
 import { Dialog, DialogContent } from '@mui/material';
-import InputGhangeText from './InputGangeText';
+import InputGhangeText from './InputChangeText';
 import { useDispatch } from 'react-redux';
 import { saveChange } from '../redux/actionsCreator';
 import PropTypes from 'prop-types';

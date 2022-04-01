@@ -6,14 +6,14 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import Filter from '../filter/Filter';
 import { addNews } from '../../redux/actionsCreator';
 import { useDispatch } from 'react-redux';
-import { FILTER_NEWS_ALL } from '../../constants';
+import SelectTag from '../selectTag/selectTag';
 
-export default function AddNewsModal(setTitle, setAuthor, setNewText, title, author, newText) {
+
+export default function AddNewsModal({setTitle, setAuthor, setNewText, title, author, newText}) {
   const [open, setOpen] = useState(false);
-  const [filterValue, setFilterValue]= useState(FILTER_NEWS_ALL)
+  const [tag, setTags]= useState()
  const dispatch = useDispatch()
   const handleClickOpen = () => {
     setOpen(true);
@@ -24,7 +24,7 @@ export default function AddNewsModal(setTitle, setAuthor, setNewText, title, aut
   };
   const createNews = () => {
     setOpen(false);
-      dispatch(addNews(title, newText, author))
+      dispatch(addNews({title, newText, author, tag}))
   }
 
   return (
@@ -38,30 +38,33 @@ export default function AddNewsModal(setTitle, setAuthor, setNewText, title, aut
           <DialogContentText>
           </DialogContentText>
           <TextField
+            placeholder='Title'
             autoFocus
             margin="dense"
             value={title}
-            onChange={setTitle}
+            onChange={(event) => { setTitle(event.target.value) }}
             fullWidth
             variant="standard"
           />
           <TextField
+            placeholder='Author'
             autoFocus
             margin="dense"
             value={author}
-            onChange={setAuthor}
+            onChange={(event) => { setAuthor(event.target.value) }}
             fullWidth
             variant="standard"
           />
             <TextField
+            placeholder='text'
             autoFocus
             margin="dense"
             value={newText}
-            onChange={setNewText}
+            onChange={(event) => { setNewText(event.target.value) }}
             fullWidth
             variant="standard"
           />
-          <Filter filterValue={filterValue} setFilterValue={setFilterValue}/>
+            <SelectTag tag={tag} setTags={setTags}/>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>

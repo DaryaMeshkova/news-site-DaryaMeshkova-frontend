@@ -1,24 +1,23 @@
 import  React, { useState } from 'react';
 import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
 import {useSelector, useDispatch } from 'react-redux';
-import { getNumber } from '../../redux/actionsCreator';
+import { getNews} from '../../redux/actionsCreator';
+import PropTypes from 'prop-types';
 
 
-export default function BasicPagination() {
-  const [page, setPage] = useState(1)
- const  dispatch = useDispatch()
-// const count= useSelector((state) => state.news.count);
-// const {count} = data
-// console.log(data)
-const pageButton = Math.ceil(11/5)
-const changePage=()=>{
-  dispatch(getNumber(page),[page])
-
-}
+export default function BasicPagination({page, setPage}) {
+const  {count}  = useSelector((state) => state.number);
+const pageButton = Math.ceil(count/5)
+const  dispatch = useDispatch()
+  const handleChange = (event, value) => {
+    setPage(value);
+    dispatch(getNews(value))
+  };
   return (
-    <Stack spacing={2}>
-      <Pagination boundaryCount={pageButton} count={pageButton} onClick={changePage} >{page}</Pagination>
-    </Stack>
+      <Pagination boundaryCount={pageButton} count={pageButton} page={page} onChange={handleChange}  />
   );
+}
+BasicPagination.prototype ={
+  page: PropTypes.number.isRequired,
+  setPage: PropTypes.func.isRequired,
 }

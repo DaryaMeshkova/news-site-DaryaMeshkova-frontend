@@ -4,6 +4,8 @@ import { fetchNewsWatcher } from './saga'
 import loginUserWatcher from './sagaLogin'
 import { saveChangeWatcher } from './sagaEdit'
 import { addNewsWatcher } from './addNewsSaga'
+import { getNumberWatcher } from './sagaPagination'
+import { getTagsWatcher } from './getTagsSaga'
 
 
 
@@ -13,7 +15,8 @@ export default function* rootSaga() {
     fetchNewsWatcher(),
     loginUserWatcher(),
     saveChangeWatcher(),
-    // paginationWatcher(),
-    addNewsWatcher()
+    getNumberWatcher(),
+    addNewsWatcher(),
+    getTagsWatcher()
   ])
 }

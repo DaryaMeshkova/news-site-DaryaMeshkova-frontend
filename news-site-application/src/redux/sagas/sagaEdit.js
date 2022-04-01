@@ -5,12 +5,13 @@ import api from '../api';
 
 
 function* saveChange({payload:{text, id}}) {
-//  console.log(id)
+  // const config = {
+  //   headers: "{ 'Authorization': `Bearer ${localStorage.access}` }"
+  // }
   try {
-    const response = yield api.patch(`news/${id.id}/`, {text})
+    const response = yield api.patch(`news/${id.id}/`, {text},  )
       .then((response) => response.data);
     yield put({ type: NEW_TEXT, payload: response });
-  //  console.log(response)
   } catch (error) {
     yield put({ type: SAVE_CHANGE_ERROR, error });
   }

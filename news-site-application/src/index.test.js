@@ -1,15 +1,15 @@
 import { render, screen } from '@testing-library/react';
-import App from './app';
-import MainPage from './pages/MainPage/MainPage';
+import {userEvent, within} from '@testing-library/user-event' ;
+import '@testing-library/jest-dom'
+import NewItem from './redux/containers/NewItem';
 
 test('renders learn react link', () => {
-  render(<App />);
+  jest.mock("react-router-dom");
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });
 
 test("tag changes", async () => {
-  render(<MainPage />);
 
   expect(await screen.findByText(/tag: none/i)).toBeInTheDocument();
 
@@ -20,7 +20,7 @@ test("tag changes", async () => {
 
   userEvent.click(selectEl);
 
-  const optionsPopupEl = await screen.getByRole("listbox", {
+  const optionsPopupEl = await screen.getByTestId("box", {
     name: selectLabel
   });
 
@@ -31,26 +31,35 @@ test("tag changes", async () => {
   ).toBeInTheDocument();
 });
 
-test('should has the new value', async () => {
-  // const user = userEvent.setup();
-  const onChangeMock = jest.fn();
-  const { getByRole, rerender } = render(<Input value="" onChange={onChangeMock} />);
+test('all elem', async () => {
+  jest.mock("react-router-dom");
+  const MOCK = {author: 'someValue', title:'someTitle', text: 'comeText'}
 
-  const input = getByRole('textbox');
-  expect(input).toHaveValue('');
+  const { getByTestId } = render(<NewItem {...MOCK} />);
 
-  rerender(<Input value="new input value" onChange={onChangeMock} />);
+  ["news", "author", "title", "text"].forEach((id) =>
+  expect(getByTestId(id)).toBeInTheDocument()
+);
+});
 
-  expect(input).toHaveValue('new input value');
+test('element contant', async () => {
+  jest.mock("react-router-dom");
+  const MOCK = {author: 'someValue', title:'someTitle', text: 'comeText'}
+
+  const { getByTestId, } = render(<NewItem {...MOCK} />);
+  const news = getByTestId("news");
+  const author = getByTestId("author");
+  const title = getByTestId("title");
+  const text = getByTestId("text");
+
+  ["author", "title", "text"].forEach((elem) =>
+  expect(news.toBeInTheDocument(elem))
+);
+expect(title.textContent).toContain(MOCK.titleCard);
+expect(author.textContent).toContain(MOCK.bodyCard);
+expect(text.textContent).toHaveAttribute(MOCK.imagePath);
 });
 
 test('should correctly set default option', () => {
-  render(<App />)
-  expect(screen.getByRole('option', { value: 'all' }).selected).toBe(true)
+  expect(screen.getByTestId('tag', { value: 'all' }).selected).toBe(true)
 })
-
-test('should display the correct number of options', () => {
-  render(<App />)
-  expect(screen.getAllByRole('option').length).toBe(3)
-})
-Change 

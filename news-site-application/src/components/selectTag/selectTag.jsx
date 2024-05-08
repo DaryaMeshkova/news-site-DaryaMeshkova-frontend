@@ -12,7 +12,7 @@ export default function SelectTag({ tag, setTags }) {
   const  {tags} = useSelector((state) => state.tag);
   // console.log(tags)
   return (
-    <Box sx={{ minWidth: 200 }}>
+    <Box sx={{ minWidth: 200 }} data-testid="tag">
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Tag</InputLabel>
         <Select

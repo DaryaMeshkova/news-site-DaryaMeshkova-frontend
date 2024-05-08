@@ -6,12 +6,13 @@ function Search({ searchValue, setSearchValue }) {
     setSearchValue(event.target.value);
   };
   return (
-    <div>
+    <div data-testid="search">
       <input
         type="text"
         placeholder="Search"
         onChange={handleChange}
         value={searchValue}
+        data-testid="input"
       />
     </div>
   );

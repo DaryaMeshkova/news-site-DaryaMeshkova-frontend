@@ -9,13 +9,13 @@ describe("action creators for News", () => {
     ...(payload && { payload }),
   });
 
-  test("getNews should return action object", () => {
+  test("getText should return action object with type NEW_TEXT", () => {
     expect(newText().payload).toBeFalsy();
 
     expect(newText()).toEqual(actionCreator(NEW_TEXT));
   });
 
-  test("setNews should return action object", () => {
+  test("setText should return action object with type SAVE_CHANGE", () => {
     expect(saveChange(MOCK_ACTION_PAYLOAD).payload).toBe(MOCK_ACTION_PAYLOAD);
 
     expect(saveChange(MOCK_ACTION_PAYLOAD)).toEqual(
@@ -23,7 +23,7 @@ describe("action creators for News", () => {
     );
   });
 
-  test("getNewsError should return action object", () => {
+  test("getTagsError should return action object with type TAGS_RECEIVED", () => {
     expect(receiveTags(MOCK_ACTION_PAYLOAD).payload).toBe(MOCK_ACTION_PAYLOAD);
 
     expect(receiveTags(MOCK_ACTION_PAYLOAD)).toEqual(
